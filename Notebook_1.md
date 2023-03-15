@@ -4,6 +4,7 @@ _**Source :**_
 
 * [Cours TD1](https://www.youtube.com/watch?v=5_qrxVq1kvc&ab_channel=AlfredoCanziani)
 * [SVD](https://www.youtube.com/watch?v=mBcLRGuAFUk&ab_channel=MITOpenCourseWare)
+* [Algèbre Linéaire](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)
 
 Imaginons que l'on prenne une image d'un 1 mégapixel (1M de pixels).
 
@@ -48,18 +49,38 @@ de la flèche).
 
 Ici, nous avons un réseau à 2 matrices : 
 
-- la première matrice correspond à l'entrée (input) à 2 dimensions
-
+- la première matrice à 2 lignes correspond à l'entrée (input) à 2 dimensions donc les coordonnées du point d'entrée X et Y 
+(2 neurones) reliée à une **couche cachée** de dimension 100.
+- la seconde matrice à 5 lignes correspond à ma sortie (5 neurones)
 
 ```mermaid
-A --> B
-C --> B
+graph
+1 --> 100
+2 --> 100
+100 --> 1'
+100 --> 2'
+100 --> 3'
+100 --> 4'
+100 --> 5'
 ```
 
+Notre réseau comprend donc :
+- une couche d'entrée (2 neurones)
+- une couche intermédiaire/cachée de dimension 100
+- une couche de sortie (5 neurones car 5 classes)
+
+C'est donc un **réseau à 3 couches**.
+Ces couches sont **non-linéaires**. Si ces couches étaient linéaires, cela reviendra à un réseau à 1 seule couche qui ne
+peut donc faire que les 4 opérations linéaires : scaling, rotation, translation, réflexion et shearing
 
 
 ```python
-print("\ntest")
+import torch
+import torch.nn as nn
+from res.plot_lib import set_default, show_scatterplot, plot_bases
+from matplotlib.pyplot import plot, title, axis
 
 ```
-
+```doctest
+>>> print("test")
+```
